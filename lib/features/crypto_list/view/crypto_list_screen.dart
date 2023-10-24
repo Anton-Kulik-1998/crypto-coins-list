@@ -39,6 +39,8 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
             _cryptoListBloc.add(LoadCryptoList(completer: completer));
             return completer.future;
           },
+          backgroundColor: theme.floatingActionButtonTheme.backgroundColor,
+          color: theme.scaffoldBackgroundColor,
           child: BlocBuilder<CryptoListBloc, CryptoListState>(
             bloc: _cryptoListBloc,
             builder: (context, state) {

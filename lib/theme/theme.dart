@@ -12,7 +12,7 @@ final darkTheme = ThemeData(
   colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 55, 55, 55)),
   dividerColor: Colors.white10,
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: Colors.amber,
+    backgroundColor: Color.fromARGB(255, 255, 139, 7),
   ),
   appBarTheme: AppBarTheme(
     backgroundColor: Color.fromARGB(255, 53, 53, 53),
