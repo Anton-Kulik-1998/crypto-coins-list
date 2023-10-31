@@ -26,4 +26,10 @@ class CryptoCoinsRepository implements AbstractCoinsRepository {
     }).toList();
     return cryptoCoinsList;
   }
+  
+  @override
+  Future<CryptoCoin> getCoinDetails(String currencyCode) async {
+    // TODO: implement getCoinDetails
+    throw UnimplementedError();
+  }
 }
