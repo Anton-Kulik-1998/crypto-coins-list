@@ -2,16 +2,12 @@ import 'package:crypto_coins_list/repositories/crypto_coins/crypto_coins.dart';
 import 'package:flutter/material.dart';
 
 class CryptoCoinScreen extends StatefulWidget {
-  const CryptoCoinScreen({
-    super.key,
-    required this.coin
-  });
+  const CryptoCoinScreen({super.key, required this.coin});
 
   final CryptoCoin coin;
 
   @override
   State<CryptoCoinScreen> createState() => _CryptoCoinScreenState();
-  
 }
 
 class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
@@ -33,7 +29,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("...")),
+      appBar: AppBar(title: Text("${widget.coin.name}")),
     );
   }
 }
