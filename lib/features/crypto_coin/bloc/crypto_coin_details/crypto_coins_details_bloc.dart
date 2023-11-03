@@ -19,8 +19,9 @@ class CryptoCoinsDetailsBloc
       if (state is! CryptoCoinDetailsLoaded) {
         emit(const CryptoCoinDetailsLoading());
       }
-      // final coinDetails = await coinsRepository.
-      // TODO: Сделать репозиторий!
+      final coinDetails =
+          await coinsRepository.getCoinDetails(event.currencyCode);
+      emit(CryptoCoinDetailsLoaded(coinDetails));
     } catch (e) {
       emit(CryptoCoinDetailsLoadingFailure(e));
     }
