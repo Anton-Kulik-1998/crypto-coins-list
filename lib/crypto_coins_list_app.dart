@@ -1,6 +1,8 @@
 import 'package:crypto_coins_list/router/router.dart';
 import 'package:crypto_coins_list/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 class CryptoCoinsListApp extends StatelessWidget {
   const CryptoCoinsListApp({super.key});
@@ -12,6 +14,9 @@ class CryptoCoinsListApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: darkTheme,
       routes: routes,
+      navigatorObservers: [
+        TalkerRouteObserver(GetIt.I<Talker>()),
+      ],
     );
   }
 }
