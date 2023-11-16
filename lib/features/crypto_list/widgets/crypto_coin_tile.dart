@@ -12,14 +12,15 @@ class CryptoCoinTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final coinDetails = coin.details;
     return ListTile(
-      leading: Image.network(coin.imageURL),
+      leading: Image.network(coinDetails.imageUrl),
       title: Text(
         coin.name,
         style: theme.textTheme.bodyMedium,
       ),
       subtitle: Text(
-        "${coin.priceInUSD} \$",
+        "${coinDetails.priceInUSD} \$",
         style: theme.textTheme.labelSmall,
       ),
       trailing: Icon(Icons.arrow_forward_ios),
