@@ -43,6 +43,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
         builder: (context, state) {
           if (state is CryptoCoinDetailsLoaded) {
             final coin = state.coin;
+            final coinDetails = coin.details;
             return Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,11 +51,11 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
                   SizedBox(
                     height: 160,
                     width: 160,
-                    child: Image.network(coin.fullImageUrl),
+                    child: Image.network(coinDetails.fullImageUrl),
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    widget.coin.name,
+                    coin.name,
                     style: const TextStyle(
                         fontSize: 26, fontWeight: FontWeight.w700),
                   ),
@@ -64,7 +65,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
                   BaseCard(
                     child: Center(
                       child: Text(
-                        "${coin.priceInUSD} \$",
+                        "${coinDetails.priceInUSD} \$",
                         style: const TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.w700,
@@ -77,12 +78,12 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
                       children: [
                         _DataRow(
                           title: "Hight 24 Hour",
-                          value: "${coin.hight24Hour} \$",
+                          value: "${coinDetails.hight24Hour} \$",
                         ),
                         const SizedBox(height: 6),
                         _DataRow(
                             title: "Low 24 Hour",
-                            value: "${coin.low24Hours} \$")
+                            value: "${coinDetails.low24Hours} \$")
                       ],
                     ),
                   ),
