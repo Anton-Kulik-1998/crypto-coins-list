@@ -1,5 +1,10 @@
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'crypto_coin_details.g.dart';
+
+
+@JsonSerializable()
 class CryptoCoinDetail extends Equatable {
   const CryptoCoinDetail({
     required this.priceInUSD,
@@ -10,12 +15,26 @@ class CryptoCoinDetail extends Equatable {
     required this.low24Hours,
   });
 
+  @JsonKey(name: "TOSYMBOL")
   final String toSymbol;
+
+  @JsonKey(name: "LASTUPDATE")
   final DateTime lastUpdate;
+
+  @JsonKey(name: "HIGH24HOUR")
   final double hight24Hour;
+
+  @JsonKey(name: "LOW24HOUR")
   final double low24Hours;
+
+  @JsonKey(name: "PRICE")
   final double priceInUSD;
+
+  @JsonKey(name: "IMAGEURL")
   final String imageUrl;
+
+  factory CryptoCoinDetail.fromJson(Map<String, dynamic> json) => _$CryptoCoinDetailFromJson(json);
+  Map<String, dynamic> toJson() => _$CryptoCoinDetailToJson(this);
 
   String get fullImageUrl => 'https://www.cryptocompare.com/$imageUrl';
   
