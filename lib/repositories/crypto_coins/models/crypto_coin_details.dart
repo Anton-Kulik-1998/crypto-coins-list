@@ -3,7 +3,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'crypto_coin_details.g.dart';
 
-
 @JsonSerializable()
 class CryptoCoinDetail extends Equatable {
   const CryptoCoinDetail({
@@ -18,7 +17,11 @@ class CryptoCoinDetail extends Equatable {
   @JsonKey(name: "TOSYMBOL")
   final String toSymbol;
 
-  @JsonKey(name: "LASTUPDATE")
+  @JsonKey(
+    name: "LASTUPDATE",
+    toJson: _dateTimeToJson,
+    fromJson: _dateTimeFromJson,
+  )
   final DateTime lastUpdate;
 
   @JsonKey(name: "HIGH24HOUR")
@@ -33,11 +36,16 @@ class CryptoCoinDetail extends Equatable {
   @JsonKey(name: "IMAGEURL")
   final String imageUrl;
 
-  factory CryptoCoinDetail.fromJson(Map<String, dynamic> json) => _$CryptoCoinDetailFromJson(json);
+  factory CryptoCoinDetail.fromJson(Map<String, dynamic> json) =>
+      _$CryptoCoinDetailFromJson(json);
   Map<String, dynamic> toJson() => _$CryptoCoinDetailToJson(this);
 
+  static int _dateTimeToJson(DateTime time) => time.millisecondsSinceEpoch;
+  static DateTime _dateTimeFromJson(int milliseconds) =>
+      DateTime.fromMicrosecondsSinceEpoch(milliseconds);
+
   String get fullImageUrl => 'https://www.cryptocompare.com/$imageUrl';
-  
+
   @override
   List<Object> get props => [
         toSymbol,
