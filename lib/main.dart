@@ -25,6 +25,8 @@ void main() async {
   Hive.registerAdapter(CryptoCoinAdapter());
   Hive.registerAdapter(CryptoCoinDetailAdapter());
 
+  final cryptoCoinsBox = await Hive.openBox<CryptoCoin>("crypto_coins_box");
+
   final app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -48,7 +50,11 @@ void main() async {
   );
 
   GetIt.I.registerLazySingleton<AbstractCoinsRepository>(
-      () => CryptoCoinsRepository(dio: dio));
+    () => CryptoCoinsRepository(
+      dio: dio,
+      cryptoCoinsBox: cryptoCoinsBox,
+    ),
+  );
 
   FlutterError.onError =
       (details) => GetIt.I<Talker>().handle(details.exception, details.stack);

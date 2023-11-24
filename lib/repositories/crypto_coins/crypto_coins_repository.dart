@@ -1,10 +1,15 @@
 import 'package:crypto_coins_list/repositories/crypto_coins/crypto_coins.dart';
 import 'package:dio/dio.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class CryptoCoinsRepository implements AbstractCoinsRepository {
-  CryptoCoinsRepository({required this.dio});
+  CryptoCoinsRepository({
+    required this.dio,
+    required this.cryptoCoinsBox,
+  });
 
   final Dio dio;
+  final Box<CryptoCoin> cryptoCoinsBox;
   @override
   Future<List<CryptoCoin>> getCoinsList() async {
     final response = await dio.get(
