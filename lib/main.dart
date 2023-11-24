@@ -13,7 +13,6 @@ import 'package:talker_bloc_logger/talker_bloc_logger.dart';
 import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
 import 'package:talker_dio_logger/talker_dio_logger_settings.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-   
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +22,8 @@ void main() async {
   GetIt.I<Talker>().debug("Talker started...");
 
   await Hive.initFlutter();
+  Hive.registerAdapter(CryptoCoinAdapter());
+  Hive.registerAdapter(CryptoCoinDetailAdapter());
 
   final app = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
