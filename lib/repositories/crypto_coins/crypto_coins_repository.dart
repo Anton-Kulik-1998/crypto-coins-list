@@ -23,7 +23,9 @@ class CryptoCoinsRepository implements AbstractCoinsRepository {
       GetIt.I<Talker>().handle(e, st);
       return cryptoCoinsBox.values.toList();
     }
-
+    cryptoCoinsList.sort(
+      (a, b) => b.details.priceInUSD.compareTo(a.details.priceInUSD),
+    );
     return cryptoCoinsList;
   }
 
